@@ -7,6 +7,14 @@ const nextConfig: NextConfig = {
     ],
     unoptimized: true,
   },
+  async rewrites() {
+    return [
+      {
+        source: '/__clerk/:path*',
+        destination: 'https://frontend-api.clerk.services/:path*',
+      },
+    ];
+  },
 };
 
 export default nextConfig;
