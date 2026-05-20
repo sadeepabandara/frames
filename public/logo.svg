@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="36" height="36">
+  <!-- Rounded background -->
+  <rect width="36" height="36" rx="8" fill="#111111"/>
+
+  <!-- Film notches top -->
+  <rect x="4.5" y="3"  width="4.5" height="3.5" rx="1" fill="#2a2a2a"/>
+  <rect x="13.5" y="3" width="4.5" height="3.5" rx="1" fill="#2a2a2a"/>
+  <rect x="22.5" y="3" width="4.5" height="3.5" rx="1" fill="#2a2a2a"/>
+
+  <!-- Film notches bottom -->
+  <rect x="4.5"  y="29.5" width="4.5" height="3.5" rx="1" fill="#2a2a2a"/>
+  <rect x="13.5" y="29.5" width="4.5" height="3.5" rx="1" fill="#2a2a2a"/>
+  <rect x="22.5" y="29.5" width="4.5" height="3.5" rx="1" fill="#2a2a2a"/>
+
+  <!-- F letterform -->
+  <!-- Top bar -->
+  <rect x="10" y="10" width="17" height="4.5" rx="1.4" fill="#3b82f6"/>
+  <!-- Vertical stem -->
+  <rect x="10" y="10" width="4.5" height="16" rx="1.4" fill="#3b82f6"/>
+  <!-- Mid bar -->
+  <rect x="10" y="17" width="12" height="4" rx="1.4" fill="#3b82f6"/>
+</svg>
