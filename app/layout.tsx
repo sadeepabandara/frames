@@ -31,6 +31,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <ClerkProvider
       afterSignOutUrl="/home"
       appearance={{
+        layout: {
+          logoImageUrl: '/logo.svg',
+          logoLinkUrl: '/home',
+        },
         variables: {
           colorPrimary:          '#3b82f6',
           colorBackground:       '#141414',
@@ -44,40 +48,68 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           borderRadius:          '0.75rem',
           fontFamily:            'Outfit, sans-serif',
           fontSize:              '0.88rem',
-          spacingUnit:           '1rem',
+          spacingUnit:           '0.8rem',
         },
         elements: {
+          // Modal — single rounded container, clips everything inside
           modalBackdrop:            'backdrop-blur-sm bg-black/70',
-          modalContent:             'bg-[#141414] border border-white/[0.08] shadow-2xl',
-          card:                     'bg-[#141414] border border-white/[0.08] shadow-2xl rounded-2xl',
-          cardBox:                  'shadow-none',
+          modalContent:             'bg-[#141414] border border-white/[0.08] shadow-2xl !rounded-2xl overflow-hidden',
+
+          // Card inside modal — no extra borders/radius so modal controls shape
+          card:                     '!bg-transparent !border-0 !shadow-none !rounded-none',
+          cardBox:                  '!shadow-none !rounded-none',
+
+          // Logo
+          logoBox:                  'flex items-center justify-center pt-2',
+          logoImage:                'w-10 h-10',
+
+          // Header
           headerTitle:              'text-white font-extrabold text-[1.25rem] tracking-tight',
           headerSubtitle:           'text-white/40 text-[0.8rem]',
-          logoBox:                  'hidden',
+
+          // Tabs
           tabButton:                'text-white/50 hover:text-white',
           tabButtonActive:          'text-[#3b82f6] border-b-2 border-[#3b82f6]',
+
+          // Form fields
           formFieldLabel:           'text-white/60 text-[0.78rem] font-medium',
           formFieldInput:           'bg-white/[0.06] border border-white/[0.1] text-white placeholder:text-white/25 rounded-lg focus:border-[#3b82f6]/60 focus:bg-white/[0.09] transition-all',
           formFieldInputShowPasswordButton: 'text-white/40 hover:text-white/70',
           formFieldErrorText:       'text-red-400 text-[0.75rem]',
           formFieldWarningText:     'text-yellow-400 text-[0.75rem]',
+
+          // Buttons
           formButtonPrimary:        'bg-[#3b82f6] hover:bg-[#2563eb] text-black font-bold rounded-lg transition-all',
           formButtonReset:          'text-[#3b82f6] hover:text-[#93c5fd] text-[0.8rem]',
+
+          // Social buttons
           socialButtonsBlockButton:       'border border-white/[0.1] bg-white/[0.04] text-white hover:bg-white/[0.08] rounded-lg transition-all',
           socialButtonsBlockButtonText:   'text-white/80 font-medium',
           socialButtonsBlockButtonArrow:  'text-white/30',
+
+          // Divider
           dividerLine:              'bg-white/[0.08]',
           dividerText:              'text-white/30 text-[0.75rem]',
+
+          // Footer
           footerActionLink:         'text-[#3b82f6] hover:text-[#93c5fd] font-semibold',
           footerActionText:         'text-white/40',
           footer:                   'bg-transparent border-t border-white/[0.06]',
+
+          // Identity preview
           identityPreviewText:      'text-white/70',
           identityPreviewEditButton:'text-[#3b82f6] hover:text-[#93c5fd]',
+
+          // OTP input
           otpCodeFieldInput:        'bg-white/[0.06] border border-white/[0.1] text-white rounded-lg',
+
+          // User profile internal nav
           navbar:                   'bg-[#111] border-r border-white/[0.06]',
           navbarButton:             'text-white/60 hover:text-white hover:bg-white/[0.06]',
           navbarButtonActive:       'text-[#3b82f6] bg-[rgba(59,130,246,0.08)]',
           pageScrollBox:            'bg-[#141414]',
+
+          // Misc
           badge:                    'bg-[rgba(59,130,246,0.1)] text-[#3b82f6] border border-[rgba(59,130,246,0.2)]',
           avatarBox:                'border-2 border-white/20',
           userButtonPopoverCard:    'bg-[#1a1a1a] border border-white/[0.08] shadow-2xl',
