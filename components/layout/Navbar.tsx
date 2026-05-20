@@ -8,11 +8,12 @@ import { useUIStore } from '@/store';
 import { cn } from '@/lib/utils';
 import { useState, useEffect } from 'react';
 import { useUser, UserButton, SignInButton } from '@clerk/nextjs';
+
 const NAV_LINKS = [
   { href: '/home',      label: 'Home',    icon: Home },
   { href: '/movies',    label: 'Movies',  icon: Film },
   { href: '/tv',        label: 'Series',  icon: Tv },
-  { href: '/watchlist', label: 'My List', icon: Bookmark },
+  { href: '/watchlist', label: 'My List', icon: Bookmark, authOnly: true },
 ];
 
 export function Navbar() {
@@ -28,8 +29,9 @@ export function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
-  // Hide navbar when video player is open
   if (videoPlayerOpen) return null;
+
+  const visibleLinks = NAV_LINKS.filter(link => !link.authOnly || isSignedIn);
 
   return (
     <>
@@ -46,7 +48,7 @@ export function Navbar() {
           </Link>
 
           <nav className="hidden md:flex items-center gap-1">
-            {NAV_LINKS.map((link) => {
+            {visibleLinks.map((link) => {
               const active = pathname === link.href || (link.href !== '/home' && pathname.startsWith(link.href));
               const Icon = link.icon;
               return (
@@ -74,7 +76,6 @@ export function Navbar() {
             </button>
 
             {isSignedIn ? (
-              /* Clerk's UserButton — shows avatar, handles sign out, profile, etc. */
               <div className="ml-1">
                 <UserButton
                   appearance={{
@@ -89,7 +90,6 @@ export function Navbar() {
                 />
               </div>
             ) : (
-              /* Not signed in — show Sign In button using Clerk's modal */
               <SignInButton mode="modal">
                 <button
                   className="ml-1 w-8 h-8 rounded-full bg-white/[0.08] border border-white/[0.12] flex items-center justify-center text-white/80 hover:text-white hover:bg-white/[0.14] transition-colors"
@@ -114,7 +114,7 @@ export function Navbar() {
       {mobileOpen && (
         <div className="fixed inset-0 z-40 bg-[rgba(0,0,0,0.9)] backdrop-blur-xl pt-[58px] flex flex-col">
           <nav className="flex flex-col p-6 gap-2">
-            {NAV_LINKS.map((link) => (
+            {visibleLinks.map((link) => (
               <Link key={link.href} href={link.href}
                 className={cn(
                   'px-4 py-3 rounded-lg text-[0.95rem] font-medium transition-colors',
