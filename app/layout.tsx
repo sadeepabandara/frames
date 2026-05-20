@@ -30,7 +30,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <ClerkProvider
       afterSignOutUrl="/home"
-      clerkJSUrl="https://npm.clerk.services/@clerk/clerk-js@5/dist/clerk.browser.js"
       appearance={{
         variables: {
           colorPrimary:          '#3b82f6',
