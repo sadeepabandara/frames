@@ -13,6 +13,10 @@ const nextConfig: NextConfig = {
         source: '/__clerk/:path*',
         destination: 'https://frontend-api.clerk.services/:path*',
       },
+      {
+        source: '/npm/@clerk/:path*',
+        destination: 'https://npm.clerk.services/@clerk/:path*',
+      },
     ];
   },
 };
