@@ -6,17 +6,24 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: { default: 'FRAMES — Premium Streaming', template: '%s | FRAMES' },
-  description: 'Discover and explore thousands of movies and TV series. FRAMES — Cinema lives here.',
-  keywords: ['streaming', 'movies', 'tv shows', 'cinema', 'watch online'],
+  description: 'Discover and watch thousands of movies and TV series in HD. FRAMES — Cinema lives here.',
+  keywords: ['streaming', 'movies', 'tv shows', 'cinema', 'watch online', 'free streaming', 'HD movies'],
   authors: [{ name: 'FRAMES' }],
+  metadataBase: new URL('https://watchframes.vercel.app'),
   openGraph: {
     title: 'FRAMES — Premium Streaming',
-    description: 'Cinema lives here.',
+    description: 'Discover and watch thousands of movies and TV series in HD. Cinema lives here.',
     url: 'https://watchframes.vercel.app',
     siteName: 'FRAMES',
     type: 'website',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'FRAMES — Premium Streaming' }],
   },
-  twitter: { card: 'summary_large_image', title: 'FRAMES' },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'FRAMES — Premium Streaming',
+    description: 'Discover and watch thousands of movies and TV series in HD.',
+    images: ['/og-image.png'],
+  },
   robots: { index: true, follow: true },
 };
 

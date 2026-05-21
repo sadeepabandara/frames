@@ -1,5 +1,7 @@
 # FRAMES
 
+![FRAMES OG Image](https://raw.githubusercontent.com/sadeepabandara/frames/main/public/og-image.png)
+
 A full-stack streaming discovery app built with Next.js 16, featuring movie and TV series browsing, a personal watchlist, and in-app video playback — powered by the TMDB API.
 
 ![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)
@@ -49,7 +51,7 @@ A full-stack streaming discovery app built with Next.js 16, featuring movie and 
 ### Installation
 
 ```bash
-git clone https://github.com/yourusername/frames.git
+git clone https://github.com/sadeepabandara/frames.git
 cd frames
 npm install
 ```
