@@ -19,6 +19,12 @@ export function EpisodesSectionClient({ show }: { show: any }) {
   const { openSignIn } = useClerk();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
+
+  // Jump back to the top of the list when season, search or order changes
+  useEffect(() => {
+    listRef.current?.scrollTo({ top: 0 });
+  }, [selectedSeason, search, reversed]);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -135,8 +141,11 @@ export function EpisodesSectionClient({ show }: { show: any }) {
           </button>
         </div>
 
-        {/* Episode list */}
-        <div className="bg-[#111] rounded-xl border border-white/[0.06] overflow-hidden divide-y divide-white/[0.04]">
+        {/* Episode list — scrolls inside its own box */}
+        <div
+          ref={listRef}
+          className="bg-[#111] rounded-xl border border-white/[0.06] overflow-y-auto overflow-x-hidden overscroll-contain max-h-[480px] sm:max-h-[540px] divide-y divide-white/[0.04]"
+        >
 
           {isLoading && Array.from({ length: 5 }).map((_, i) => (
             <div key={i} className="flex items-center gap-3 px-4 py-3">
