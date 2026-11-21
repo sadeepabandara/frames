@@ -37,13 +37,15 @@ export function VideoPlayer({
     return () => window.removeEventListener('keydown', handleKey);
   }, [onClose]);
 
-  // Accent color matches the design system accent: #3b82f6
-  const accentColor = '3b82f6';
+  // frameXTV embed URLs:
+  //   Movie: https://framextv.cc/embed/{tmdbId}
+  //   TV:    https://framextv.cc/embed/{tmdbId}/{season}/{episode}
+  const params = 'autoplay=1&muted=0';
 
   const src =
     type === 'movie'
-      ? `https://player.videasy.net/movie/${tmdbId}?color=${accentColor}`
-      : `https://player.videasy.net/tv/${tmdbId}/${season}/${episode}?nextEpisode=true&autoplayNextEpisode=true&episodeSelector=true&overlay=true&color=${accentColor}`;
+      ? `https://framextv.cc/embed/${tmdbId}?${params}`
+      : `https://framextv.cc/embed/${tmdbId}/${season}/${episode}?${params}`;
 
   const label =
     type === 'tv' && episodeName

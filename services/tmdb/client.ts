@@ -80,6 +80,10 @@ export async function getTrending(timeWindow: 'day' | 'week' = 'week') {
   return data;
 }
 
+export async function getTrendingLite() {
+  return tmdbFetch<TMDBPaginatedResponse<SearchResult>>('/trending/all/day');
+}
+
 export async function getTopRatedMovies(page = 1) {
   return tmdbFetch<TMDBPaginatedResponse<TMDBMovie>>('/movie/top_rated', { page });
 }
@@ -153,18 +157,14 @@ export async function getTVSeasonEpisodes(tvId: number, seasonNumber: number) {
 
 export async function searchMulti(query: string, page = 1) {
   return tmdbFetch<TMDBPaginatedResponse<SearchResult>>('/search/multi', {
-    query: encodeURIComponent(query), page, include_adult: 'false',
+    query, page, include_adult: 'false',
   });
 }
 
 export async function searchMovies(query: string, page = 1) {
-  return tmdbFetch<TMDBPaginatedResponse<TMDBMovie>>('/search/movie', {
-    query: encodeURIComponent(query), page,
-  });
+  return tmdbFetch<TMDBPaginatedResponse<TMDBMovie>>('/search/movie', { query, page });
 }
 
 export async function searchTV(query: string, page = 1) {
-  return tmdbFetch<TMDBPaginatedResponse<TMDBTVShow>>('/search/tv', {
-    query: encodeURIComponent(query), page,
-  });
+  return tmdbFetch<TMDBPaginatedResponse<TMDBTVShow>>('/search/tv', { query, page });
 }
